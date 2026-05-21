@@ -1,0 +1,88 @@
+Task1: Create Project Structure
+pwd
+mkdir technova_project
+cd technova_project
+mkdir website backups logs scripts developers_data
+ls
+
+Task2: Create Groups
+sudo groupadd frontend_team
+sudo groupadd backend_team
+sudo groupadd devops_team
+
+Task3: Create Users
+sudo useradd -m ahmed
+sudo useradd -m sana
+sudo useradd -m usman
+sudo passwd ahmed
+12345678
+sudo passwd sana
+12345678
+sudo passwd usman
+12345678
+sudo usermod -aG frontend_team ahmed
+sudo usermod -aG backend_team sana
+sudo usermod -aG devops_team usman
+
+Task4: Verify Users & Groups
+id usman
+group usman
+id sana
+group sana
+id ahmed
+group ahmed
+cat /etc/group | sort
+
+- UID: User ID
+- GID: Group ID
+- Supplementary Groups: Extra groups assigned to a user
+
+Task5: Configure permissions
+chmod 755 website
+chmod 700 backups
+chmod 755 logs
+chmod 744 scripts
+chown ahmed:frontend_team website/
+chown root:root backups
+chown sana:backen_team logs
+chown usman:devops_team scripts
+ls -ld
+stat website
+stat backups
+stat logs
+stat scripts
+
+Task6: Install Apache Web Server
+sudo apt update
+sudo apt install apache2
+sudo systemctl start apache2
+sudo systemctl enable apache2
+sudo systemctl status apache2
+
+Task7: Deploy Website
+cd /var/www/html
+mkdir website
+cd website
+sudo nano index.html
+
+Task8: Network Verification
+ip a
+ping google.com
+hostnamectl
+
+- IP Address: Unique device address
+- Network Interface: Connects system to network
+- Packet Transmission: Sending data packets over network
+
+Task9: System Monitoring
+top
+free -m
+df -h
+uptime
+
+- RAM Available: 2864 MB
+- Disk Usage: 5.6GB(24%) leaving 18GB free
+- System uptime: 1 hour 39 minutes
+
+Bonus Task: Backup project
+sudo tar -czvf tech_backup.tar.gz technova_project/
